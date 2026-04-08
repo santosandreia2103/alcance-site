@@ -5,150 +5,757 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alcance +</title>
 
-  <!-- Fonte estilo Horizon (similar) -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --rosa: #ff007a;
+      --rosa-escuro: #d60068;
+      --amarelo: #ffd21f;
+      --preto: #111111;
+      --cinza: #f5f5f5;
+      --branco: #ffffff;
+      --texto: #222222;
+      --sombra: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
+      font-family: 'Poppins', sans-serif;
+      background: var(--branco);
+      color: var(--texto);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     header {
-      background: #111;
-      color: white;
-      padding: 15px 8%;
+      width: 100%;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
-    header h1 {
+    .logo {
       font-family: 'Orbitron', sans-serif;
-      color: #ff4fa3;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--rosa);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
-
-    /* HERO */
-    .hero {
-      height: 90vh;
-      background: url("Banner1.png") no-repeat center/cover;
+    .menu {
       display: flex;
+      gap: 24px;
       align-items: center;
-      padding: 0 8%;
-      position: relative;
+      flex-wrap: wrap;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-      top: 0;
-      left: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 600px;
-      color: white;
-      z-index: 2;
-    }
-
-    .hero h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    .hero h2 span {
-      color: #ffd23f;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      background: #ffd23f;
-      color: #111;
+    .menu a {
+      color: var(--branco);
       text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
+      font-weight: 500;
       transition: 0.3s;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-      background: #f3c100;
+    .menu a:hover {
+      color: var(--amarelo);
+    }
+
+    .btn-menu {
+      background: var(--amarelo);
+      color: var(--preto) !important;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700 !important;
+    }
+
+    .btn-menu:hover {
+      background: #ffdf57;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 92vh;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.72), rgba(0,0,0,0.35)),
+        url("Banner1.png") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 70px 20px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      color: var(--branco);
+      animation: subir 1s ease;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 210, 31, 0.15);
+      border: 1px solid rgba(255, 210, 31, 0.4);
+      color: var(--amarelo);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.4rem;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--amarelo);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 580px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-principal,
+    .btn-secundario {
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-principal {
+      background: var(--amarelo);
+      color: var(--preto);
+    }
+
+    .btn-principal:hover {
+      background: #ffdf57;
+      transform: translateY(-3px);
+    }
+
+    .btn-secundario {
+      border: 2px solid var(--branco);
+      color: var(--branco);
+    }
+
+    .btn-secundario:hover {
+      background: var(--branco);
+      color: var(--preto);
+      transform: translateY(-3px);
     }
 
     section {
-      padding: 60px 8%;
+      padding: 90px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .titulo-secao {
       text-align: center;
+      margin-bottom: 14px;
+      font-size: 2.3rem;
+      color: var(--preto);
+    }
+
+    .subtitulo-secao {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 50px auto;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .sobre {
+      background: var(--branco);
+    }
+
+    .sobre-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .sobre-texto {
+      background: var(--cinza);
+      padding: 35px;
+      border-radius: 22px;
+      box-shadow: var(--sombra);
+    }
+
+    .sobre-texto h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--rosa);
+    }
+
+    .sobre-texto p {
+      line-height: 1.9;
+      margin-bottom: 14px;
+      color: #333;
+    }
+
+    .sobre-destaques {
+      display: grid;
+      gap: 18px;
+    }
+
+    .destaque {
+      background: var(--preto);
+      color: var(--branco);
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+    }
+
+    .destaque h4 {
+      color: var(--amarelo);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .servicos {
+      background: #fffafc;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--branco);
+      border-radius: 22px;
+      padding: 28px 24px;
+      box-shadow: var(--sombra);
+      transition: 0.35s;
+      border-top: 5px solid var(--rosa);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .icone {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--rosa), var(--amarelo));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--preto);
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #555;
+      line-height: 1.8;
+      font-size: 0.96rem;
+    }
+
+    .diferenciais {
+      background: var(--preto);
+      color: var(--branco);
+    }
+
+    .diferenciais .titulo-secao,
+    .diferenciais .subtitulo-secao {
+      color: var(--branco);
+    }
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .box-diferencial {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 26px;
+      transition: 0.3s;
+    }
+
+    .box-diferencial:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 210, 31, 0.4);
+    }
+
+    .box-diferencial h3 {
+      color: var(--amarelo);
+      margin-bottom: 10px;
+    }
+
+    .box-diferencial p {
+      color: #e6e6e6;
+      line-height: 1.8;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--rosa), #ff4fa0);
+      color: var(--branco);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 800px;
+      margin: 0 auto 28px auto;
+      line-height: 1.8;
+    }
+
+    .contato {
+      background: var(--cinza);
+    }
+
+    .contato-box {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--branco);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: var(--sombra);
+      text-align: center;
+    }
+
+    .contato-box h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--preto);
+    }
+
+    .contato-box p {
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+
+    .info-contato {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .info-item {
+      background: #fff7db;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .botoes-contato {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-whats,
+    .btn-info {
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-whats {
+      background: #25d366;
+      color: white;
+    }
+
+    .btn-whats:hover {
+      transform: translateY(-3px);
+      background: #1fbe5a;
+    }
+
+    .btn-info {
+      background: var(--rosa);
+      color: white;
+    }
+
+    .btn-info:hover {
+      transform: translateY(-3px);
+      background: var(--rosa-escuro);
     }
 
     footer {
-      background: #111;
+      background: #0b0b0b;
       color: white;
-      padding: 20px;
+      padding: 35px 20px;
       text-align: center;
     }
 
+    footer h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--rosa);
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    footer p {
+      color: #d9d9d9;
+      margin: 6px 0;
+    }
+
+    .animar {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.8s ease;
+    }
+
+    .animar.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes subir {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sobre-box,
+      .diferenciais-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 2rem;
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: 85vh;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .titulo-secao {
+        font-size: 1.8rem;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .sobre-texto,
+      .contato-box {
+        padding: 25px;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Alcance +</h1>
-  <nav>
-    <a href="#">Início</a>
-    <a href="#">Sobre</a>
-    <a href="#">Contato</a>
-  </nav>
-</header>
+  <header>
+    <div class="navbar">
+      <div class="logo">Alcance +</div>
 
-<section class="hero">
-  <div class="hero-content">
-    <h2>Impulsione <span>seu negócio</span></h2>
-    <p>Mais alcance. Mais clientes. Mais resultados.</p>
-    <a href="https://wa.me/5541997304061" class="btn">ENTRE EM CONTATO</a>
-  </div>
-</section>
+      <nav class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#contato" class="btn-menu">Contato</a>
+      </nav>
+    </div>
+  </header>
 
-<section>
-  <h2>Sobre</h2>
-  <p>
-    A Alcance + é um projeto escolar voltado para ajudar pequenos negócios
-    a crescerem através do marketing digital e da divulgação estratégica.
-  </p>
-</section>
+  <section class="hero" id="inicio">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-tag">Projeto escolar de marketing</div>
+        <h1>Impulsione <span>seu negócio</span></h1>
+        <p>
+          A Alcance + busca ajudar pequenos negócios a conquistarem mais visibilidade,
+          alcançarem novos clientes e crescerem com estratégias de marketing simples,
+          criativas e eficientes.
+        </p>
 
-<footer>
-  <p>Alcance +</p>
-  <p>Criado por: Alunos da equipe 3 do colégio Sesi da Indústria</p>
-</footer>
+        <div class="hero-buttons">
+          <a href="https://wa.me/5541997304061" target="_blank" class="btn-principal">Entrar em contato</a>
+          <a href="#servicos" class="btn-secundario">Ver serviços</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre animar" id="sobre">
+    <div class="container">
+      <h2 class="titulo-secao">Sobre a Alcance +</h2>
+      <p class="subtitulo-secao">
+        Um projeto pensado para mostrar como o marketing pode ajudar pequenos negócios
+        a crescerem e se destacarem no mercado.
+      </p>
+
+      <div class="sobre-box">
+        <div class="sobre-texto">
+          <h3>Quem somos</h3>
+          <p>
+            A <strong>Alcance +</strong> é uma proposta desenvolvida para ajudar empresas
+            que ainda não possuem grande visibilidade. Muitas vezes, um negócio tem qualidade,
+            dedicação e potencial, mas não consegue chegar ao público certo.
+          </p>
+          <p>
+            Pensando nisso, nosso site apresenta a ideia de uma empresa de marketing que busca
+            fortalecer marcas, melhorar a divulgação e aproximar pequenos negócios de mais clientes.
+          </p>
+          <p>
+            Nosso foco é mostrar que, com estratégia, criatividade e presença digital, qualquer
+            negócio pode crescer de forma mais organizada e alcançar mais oportunidades.
+          </p>
+        </div>
+
+        <div class="sobre-destaques">
+          <div class="destaque">
+            <h4>Missão</h4>
+            <p>Ajudar pequenos negócios a crescerem com mais alcance, presença e visibilidade.</p>
+          </div>
+
+          <div class="destaque">
+            <h4>Visão</h4>
+            <p>Ser uma proposta criativa e inspiradora no apoio à divulgação de marcas menores.</p>
+          </div>
+
+          <div class="destaque">
+            <h4>Objetivo</h4>
+            <p>Conectar empresas ao público certo e transformar divulgação em oportunidade real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="servicos animar" id="servicos">
+    <div class="container">
+      <h2 class="titulo-secao">Nossos serviços</h2>
+      <p class="subtitulo-secao">
+        Soluções pensadas para fortalecer a imagem, a divulgação e o crescimento de pequenos negócios.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icone">01</div>
+          <h3>Divulgação digital</h3>
+          <p>
+            Estratégias para aumentar a presença online da empresa e tornar o negócio mais conhecido.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icone">02</div>
+          <h3>Redes sociais</h3>
+          <p>
+            Ideias para melhorar conteúdos, alcançar mais pessoas e criar conexão com o público.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icone">03</div>
+          <h3>Identidade visual</h3>
+          <p>
+            Fortalecimento da imagem da marca para deixá-la mais profissional, bonita e marcante.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icone">04</div>
+          <h3>Posicionamento da marca</h3>
+          <p>
+            Ações para destacar os pontos fortes do negócio e melhorar sua presença no mercado.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diferenciais animar" id="diferenciais">
+    <div class="container">
+      <h2 class="titulo-secao">Por que escolher a Alcance +?</h2>
+      <p class="subtitulo-secao">
+        Nosso projeto foi pensado para valorizar negócios menores e mostrar que eles também podem crescer com força.
+      </p>
+
+      <div class="diferenciais-grid">
+        <div class="box-diferencial">
+          <h3>Foco em pequenos negócios</h3>
+          <p>
+            Entendemos que muitas empresas ainda estão construindo seu espaço e precisam de apoio para se destacar.
+          </p>
+        </div>
+
+        <div class="box-diferencial">
+          <h3>Criatividade</h3>
+          <p>
+            Buscamos ideias modernas e chamativas para fazer cada negócio ser lembrado pelo público.
+          </p>
+        </div>
+
+        <div class="box-diferencial">
+          <h3>Comunicação clara</h3>
+          <p>
+            Valorizamos uma linguagem direta, acessível e eficiente para aproximar marca e cliente.
+          </p>
+        </div>
+
+        <div class="box-diferencial">
+          <h3>Mais oportunidades</h3>
+          <p>
+            O nosso objetivo é ajudar empresas a ampliarem seu alcance e conquistarem novas chances de crescimento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta animar">
+    <div class="container">
+      <h2>Seu negócio pode ir mais longe</h2>
+      <p>
+        Com a estratégia certa, uma marca pequena pode ganhar força, atrair clientes e crescer.
+        A Alcance + acredita no poder da divulgação para transformar oportunidades em resultados.
+      </p>
+      <a href="#contato" class="btn-principal">Fale com a equipe</a>
+    </div>
+  </section>
+
+  <section class="contato animar" id="contato">
+    <div class="container">
+      <div class="contato-box">
+        <h3>Entre em contato</h3>
+        <p>
+          Quer saber mais sobre a proposta da Alcance +? Entre em contato e conheça melhor nosso projeto.
+        </p>
+
+        <div class="info-contato">
+          <div class="info-item">WhatsApp: (41) 99730-4061</div>
+          <div class="info-item">Projeto escolar</div>
+          <div class="info-item">Equipe 3 - Colégio Sesi</div>
+        </div>
+
+        <div class="botoes-contato">
+          <a href="https://wa.me/5541997304061" target="_blank" class="btn-whats">Chamar no WhatsApp</a>
+          <a href="#sobre" class="btn-info">Mais informações</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Alcance +</h3>
+    <p>Crescimento, divulgação e oportunidade para pequenos negócios.</p>
+    <p>Criado por: Alunos da equipe 3 do Colégio Sesi da Indústria</p>
+  </footer>
+
+  <script>
+    const elementos = document.querySelectorAll('.animar');
+
+    function mostrarAoRolar() {
+      const topoTela = window.innerHeight * 0.85;
+
+      elementos.forEach((elemento) => {
+        const posicao = elemento.getBoundingClientRect().top;
+
+        if (posicao < topoTela) {
+          elemento.classList.add('mostrar');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', mostrarAoRolar);
+    mostrarAoRolar();
+  </script>
 
 </body>
 </html>
