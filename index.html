@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alcance +</title>
+
+  <!-- Fonte estilo Horizon (similar) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4fa3;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    /* HERO */
+    .hero {
+      height: 90vh;
+      background: url("Banner1.png") no-repeat center/cover;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+      top: 0;
+      left: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 600px;
+      color: white;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 span {
+      color: #ffd23f;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      background: #ffd23f;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #f3c100;
+    }
+
+    section {
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Alcance +</h1>
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Sobre</a>
+    <a href="#">Contato</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>Impulsione <span>seu negócio</span></h2>
+    <p>Mais alcance. Mais clientes. Mais resultados.</p>
+    <a href="https://wa.me/5541997304061" class="btn">ENTRE EM CONTATO</a>
+  </div>
+</section>
+
+<section>
+  <h2>Sobre</h2>
+  <p>
+    A Alcance + é um projeto escolar voltado para ajudar pequenos negócios
+    a crescerem através do marketing digital e da divulgação estratégica.
+  </p>
+</section>
+
+<footer>
+  <p>Alcance +</p>
+  <p>Criado por: Alunos da equipe 3 do colégio Sesi da Indústria</p>
+</footer>
+
+</body>
+</html>
