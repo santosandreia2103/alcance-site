@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alcance +</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --rosa: #ff007a;
-      --rosa-escuro: #d60068;
+      --rosa-claro: #ff4fa0;
       --amarelo: #ffd21f;
       --preto: #111111;
-      --cinza: #f5f5f5;
+      --preto-2: #1a1a1a;
       --branco: #ffffff;
-      --texto: #222222;
+      --cinza: #f5f5f5;
+      --cinza-texto: #555555;
+      --verde-whats: #25d366;
       --sombra: 0 10px 30px rgba(0, 0, 0, 0.12);
+      --borda: 20px;
     }
 
     * {
@@ -27,24 +30,22 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       background: var(--branco);
-      color: var(--texto);
+      color: var(--preto);
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    a {
+      text-decoration: none;
     }
 
     header {
-      width: 100%;
-      background: rgba(17, 17, 17, 0.95);
-      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
     }
 
     .navbar {
@@ -52,88 +53,103 @@
       margin: 0 auto;
       padding: 16px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
     }
 
     .logo {
-      font-family: 'Orbitron', sans-serif;
+      font-family: "Orbitron", sans-serif;
       font-size: 1.6rem;
       font-weight: 800;
       color: var(--rosa);
-      text-transform: uppercase;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .menu {
       display: flex;
-      gap: 24px;
       align-items: center;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     .menu a {
       color: var(--branco);
-      text-decoration: none;
       font-weight: 500;
+      position: relative;
       transition: 0.3s;
     }
 
-    .menu a:hover {
-      color: var(--amarelo);
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--amarelo);
+      transition: 0.3s;
     }
 
-    .btn-menu {
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .menu .btn-menu {
       background: var(--amarelo);
-      color: var(--preto) !important;
+      color: var(--preto);
       padding: 10px 18px;
       border-radius: 999px;
-      font-weight: 700 !important;
+      font-weight: 700;
     }
 
-    .btn-menu:hover {
-      background: #ffdf57;
+    .menu .btn-menu::after {
+      display: none;
+    }
+
+    .menu .btn-menu:hover {
       transform: translateY(-2px);
     }
 
     .hero {
       min-height: 92vh;
-      background:
-        linear-gradient(to right, rgba(0,0,0,0.72), rgba(0,0,0,0.35)),
-        url("Banner1.png") center/cover no-repeat;
       display: flex;
       align-items: center;
-      padding: 70px 20px;
+      background: linear-gradient(135deg, var(--rosa), var(--rosa-claro), var(--amarelo));
+      background-size: 300% 300%;
+      animation: fundoHero 8s ease infinite;
+      padding: 80px 20px;
     }
 
     .hero-container {
       max-width: 1200px;
-      margin: 0 auto;
       width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
     }
 
     .hero-content {
-      max-width: 650px;
       color: var(--branco);
-      animation: subir 1s ease;
     }
 
     .hero-tag {
       display: inline-block;
-      background: rgba(255, 210, 31, 0.15);
-      border: 1px solid rgba(255, 210, 31, 0.4);
-      color: var(--amarelo);
       padding: 10px 16px;
       border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       font-size: 0.95rem;
       margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.4rem;
-      line-height: 1.1;
+      font-family: "Orbitron", sans-serif;
+      font-size: 3.6rem;
+      line-height: 1.08;
       margin-bottom: 18px;
       text-transform: uppercase;
     }
@@ -143,21 +159,20 @@
     }
 
     .hero p {
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      max-width: 620px;
       margin-bottom: 28px;
-      max-width: 580px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 15px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
     .btn-principal,
     .btn-secundario {
-      text-decoration: none;
       padding: 14px 24px;
       border-radius: 999px;
       font-weight: 700;
@@ -171,19 +186,39 @@
     }
 
     .btn-principal:hover {
-      background: #ffdf57;
       transform: translateY(-3px);
+      background: #ffe15a;
     }
 
     .btn-secundario {
-      border: 2px solid var(--branco);
       color: var(--branco);
+      border: 2px solid var(--branco);
     }
 
     .btn-secundario:hover {
       background: var(--branco);
       color: var(--preto);
       transform: translateY(-3px);
+    }
+
+    .hero-boxes {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-mini-box {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 20px;
+      padding: 22px;
+      color: var(--branco);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-mini-box h3 {
+      margin-bottom: 8px;
+      color: var(--amarelo);
+      font-size: 1.1rem;
     }
 
     section {
@@ -197,66 +232,66 @@
 
     .titulo-secao {
       text-align: center;
-      margin-bottom: 14px;
       font-size: 2.3rem;
-      color: var(--preto);
+      margin-bottom: 14px;
     }
 
     .subtitulo-secao {
       text-align: center;
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 50px auto;
-      color: #555;
-      line-height: 1.8;
+      color: var(--cinza-texto);
+      line-height: 1.9;
     }
 
-    .sobre {
+    .quem-somos {
       background: var(--branco);
     }
 
-    .sobre-box {
+    .quem-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 30px;
-      align-items: center;
+      gap: 28px;
+      align-items: stretch;
     }
 
-    .sobre-texto {
+    .texto-box,
+    .lista-box {
       background: var(--cinza);
-      padding: 35px;
-      border-radius: 22px;
+      border-radius: var(--borda);
+      padding: 32px;
       box-shadow: var(--sombra);
     }
 
-    .sobre-texto h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+    .texto-box h3,
+    .lista-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
       color: var(--rosa);
     }
 
-    .sobre-texto p {
+    .texto-box p {
       line-height: 1.9;
-      margin-bottom: 14px;
       color: #333;
+      margin-bottom: 14px;
     }
 
-    .sobre-destaques {
+    .lista-box ul {
+      list-style: none;
       display: grid;
-      gap: 18px;
+      gap: 14px;
     }
 
-    .destaque {
-      background: var(--preto);
-      color: var(--branco);
-      padding: 24px;
-      border-radius: 20px;
-      box-shadow: var(--sombra);
+    .lista-box li {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: #333;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     }
 
-    .destaque h4 {
-      color: var(--amarelo);
-      margin-bottom: 8px;
-      font-size: 1.1rem;
+    .lista-box strong {
+      color: var(--preto);
     }
 
     .servicos {
@@ -266,7 +301,7 @@
     .cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      gap: 22px;
     }
 
     .card {
@@ -274,36 +309,35 @@
       border-radius: 22px;
       padding: 28px 24px;
       box-shadow: var(--sombra);
-      transition: 0.35s;
       border-top: 5px solid var(--rosa);
+      transition: 0.35s;
     }
 
     .card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
 
     .icone {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       border-radius: 16px;
-      background: linear-gradient(135deg, var(--rosa), var(--amarelo));
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(135deg, var(--rosa), var(--amarelo));
       color: var(--branco);
-      font-size: 1.5rem;
-      margin-bottom: 18px;
       font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 18px;
     }
 
     .card h3 {
       margin-bottom: 12px;
-      color: var(--preto);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
 
     .card p {
-      color: #555;
+      color: var(--cinza-texto);
       line-height: 1.8;
       font-size: 0.96rem;
     }
@@ -321,35 +355,34 @@
     .diferenciais-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 20px;
+      gap: 22px;
     }
 
-    .box-diferencial {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
+    .diferencial-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       padding: 26px;
       transition: 0.3s;
     }
 
-    .box-diferencial:hover {
+    .diferencial-box:hover {
       transform: translateY(-6px);
-      border-color: rgba(255, 210, 31, 0.4);
+      border-color: rgba(255, 210, 31, 0.35);
     }
 
-    .box-diferencial h3 {
+    .diferencial-box h3 {
       color: var(--amarelo);
       margin-bottom: 10px;
     }
 
-    .box-diferencial p {
-      color: #e6e6e6;
+    .diferencial-box p {
+      color: #ececec;
       line-height: 1.8;
     }
 
     .cta {
-      background: linear-gradient(135deg, var(--rosa), #ff4fa0);
+      background: linear-gradient(135deg, var(--rosa), var(--rosa-claro));
       color: var(--branco);
       text-align: center;
     }
@@ -360,8 +393,8 @@
     }
 
     .cta p {
-      max-width: 800px;
-      margin: 0 auto 28px auto;
+      max-width: 820px;
+      margin: 0 auto 26px auto;
       line-height: 1.8;
     }
 
@@ -370,7 +403,7 @@
     }
 
     .contato-box {
-      max-width: 850px;
+      max-width: 900px;
       margin: 0 auto;
       background: var(--branco);
       border-radius: 24px;
@@ -381,30 +414,29 @@
 
     .contato-box h3 {
       font-size: 1.8rem;
-      margin-bottom: 10px;
-      color: var(--preto);
+      margin-bottom: 12px;
     }
 
     .contato-box p {
-      color: #555;
-      margin-bottom: 25px;
+      color: var(--cinza-texto);
       line-height: 1.8;
+      margin-bottom: 24px;
     }
 
     .info-contato {
       display: flex;
       justify-content: center;
-      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
+      gap: 14px;
+      margin-bottom: 24px;
     }
 
     .info-item {
-      background: #fff7db;
+      background: #fff7dc;
+      color: #333;
       padding: 14px 18px;
       border-radius: 14px;
       font-weight: 600;
-      color: #333;
     }
 
     .botoes-contato {
@@ -415,43 +447,37 @@
     }
 
     .btn-whats,
-    .btn-info {
-      text-decoration: none;
+    .btn-insta {
       padding: 14px 22px;
       border-radius: 999px;
       font-weight: 700;
+      color: var(--branco);
       transition: 0.3s;
+      display: inline-block;
     }
 
     .btn-whats {
-      background: #25d366;
-      color: white;
+      background: var(--verde-whats);
     }
 
-    .btn-whats:hover {
+    .btn-whats:hover,
+    .btn-insta:hover {
       transform: translateY(-3px);
-      background: #1fbe5a;
     }
 
-    .btn-info {
-      background: var(--rosa);
-      color: white;
-    }
-
-    .btn-info:hover {
-      transform: translateY(-3px);
-      background: var(--rosa-escuro);
+    .btn-insta {
+      background: linear-gradient(135deg, var(--rosa), var(--rosa-claro));
     }
 
     footer {
       background: #0b0b0b;
-      color: white;
-      padding: 35px 20px;
+      color: var(--branco);
       text-align: center;
+      padding: 34px 20px;
     }
 
     footer h3 {
-      font-family: 'Orbitron', sans-serif;
+      font-family: "Orbitron", sans-serif;
       color: var(--rosa);
       margin-bottom: 10px;
       font-size: 1.4rem;
@@ -460,6 +486,36 @@
     footer p {
       color: #d9d9d9;
       margin: 6px 0;
+    }
+
+    .float {
+      position: fixed;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .float:hover {
+      transform: scale(1.08);
+    }
+
+    .float-whats {
+      bottom: 20px;
+      background: var(--verde-whats);
+    }
+
+    .float-insta {
+      bottom: 88px;
+      background: linear-gradient(135deg, var(--rosa), var(--rosa-claro));
     }
 
     .animar {
@@ -473,29 +529,30 @@
       transform: translateY(0);
     }
 
-    @keyframes subir {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
+    @keyframes fundoHero {
+      0% {
+        background-position: 0% 50%;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
       }
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
+      .hero-container,
+      .quem-grid {
+        grid-template-columns: 1fr;
+      }
+
       .cards {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .sobre-box,
-      .diferenciais-grid {
-        grid-template-columns: 1fr;
-      }
-
       .hero h1 {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
       }
     }
 
@@ -510,11 +567,11 @@
       }
 
       .hero {
-        min-height: 85vh;
+        min-height: 88vh;
       }
 
       .hero h1 {
-        font-size: 2.1rem;
+        font-size: 2.15rem;
       }
 
       .hero p {
@@ -525,13 +582,15 @@
         font-size: 1.8rem;
       }
 
-      .cards {
+      .cards,
+      .diferenciais-grid {
         grid-template-columns: 1fr;
       }
 
-      .sobre-texto,
+      .texto-box,
+      .lista-box,
       .contato-box {
-        padding: 25px;
+        padding: 24px;
       }
     }
   </style>
@@ -544,7 +603,7 @@
 
       <nav class="menu">
         <a href="#inicio">Início</a>
-        <a href="#sobre">Sobre</a>
+        <a href="#quem-somos">Quem somos</a>
         <a href="#servicos">Serviços</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#contato" class="btn-menu">Contato</a>
@@ -556,62 +615,93 @@
     <div class="hero-container">
       <div class="hero-content">
         <div class="hero-tag">Projeto escolar de marketing</div>
+
         <h1>Impulsione <span>seu negócio</span></h1>
+
         <p>
-          A Alcance + busca ajudar pequenos negócios a conquistarem mais visibilidade,
-          alcançarem novos clientes e crescerem com estratégias de marketing simples,
-          criativas e eficientes.
+          A Alcance + foi criada para mostrar como o marketing pode ajudar pequenos negócios
+          a ganharem mais visibilidade, alcançarem novos clientes e crescerem com estratégias
+          criativas, acessíveis e eficientes.
         </p>
 
         <div class="hero-buttons">
-          <a href="https://wa.me/5541997304061" target="_blank" class="btn-principal">Entrar em contato</a>
+          <a
+            href="https://wa.me/5541997304061?text=Olá! Vim pelo site da Alcance+ e gostaria de saber mais sobre os serviços."
+            target="_blank"
+            class="btn-principal"
+          >
+            Falar com um atendente
+          </a>
+
           <a href="#servicos" class="btn-secundario">Ver serviços</a>
+        </div>
+      </div>
+
+      <div class="hero-boxes">
+        <div class="hero-mini-box">
+          <h3>Mais visibilidade</h3>
+          <p>Divulgação pensada para ajudar marcas a alcançarem mais pessoas.</p>
+        </div>
+
+        <div class="hero-mini-box">
+          <h3>Mais oportunidades</h3>
+          <p>Estratégias para aproximar negócios de novos clientes e crescer mais.</p>
+        </div>
+
+        <div class="hero-mini-box">
+          <h3>Mais presença digital</h3>
+          <p>Uma proposta voltada para fortalecer a imagem e o alcance das empresas.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sobre animar" id="sobre">
+  <section class="quem-somos animar" id="quem-somos">
     <div class="container">
-      <h2 class="titulo-secao">Sobre a Alcance +</h2>
+      <h2 class="titulo-secao">Quem somos</h2>
       <p class="subtitulo-secao">
-        Um projeto pensado para mostrar como o marketing pode ajudar pequenos negócios
-        a crescerem e se destacarem no mercado.
+        Um projeto desenvolvido a partir de uma experiência real no programa Missão Indústria.
       </p>
 
-      <div class="sobre-box">
-        <div class="sobre-texto">
-          <h3>Quem somos</h3>
+      <div class="quem-grid">
+        <div class="texto-box">
+          <h3>Nossa história</h3>
+
           <p>
-            A <strong>Alcance +</strong> é uma proposta desenvolvida para ajudar empresas
-            que ainda não possuem grande visibilidade. Muitas vezes, um negócio tem qualidade,
-            dedicação e potencial, mas não consegue chegar ao público certo.
+            Somos a equipe 3 do 1ºC do Colégio Sesi da Indústria de Campo Largo, formada por
+            Lauanda Andrade, Eloá Fedalto de Oliveira, Felipe Shaikoski, Davi Gonçalves Felix
+            e Flávia Alexandra Antochevis.
           </p>
+
           <p>
-            Pensando nisso, nosso site apresenta a ideia de uma empresa de marketing que busca
-            fortalecer marcas, melhorar a divulgação e aproximar pequenos negócios de mais clientes.
+            Nosso projeto foi criado no programa <strong>Missão Indústria</strong>, onde visitamos
+            a empresa Nutrimental e conhecemos melhor seu processo de produção, sua trajetória
+            e sua atuação no mercado.
           </p>
+
           <p>
-            Nosso foco é mostrar que, com estratégia, criatividade e presença digital, qualquer
-            negócio pode crescer de forma mais organizada e alcançar mais oportunidades.
+            Durante essa experiência, percebemos que, apesar de ser uma empresa grande e exportar
+            diversos produtos, ela não é amplamente conhecida em muitas regiões do Brasil,
+            principalmente fora do Sul.
+          </p>
+
+          <p>
+            A partir disso, surgiu a ideia da <strong>Alcance +</strong>: uma proposta de marketing
+            voltada para ajudar pequenos negócios a crescerem, se tornarem mais visíveis e
+            conquistarem novas oportunidades.
           </p>
         </div>
 
-        <div class="sobre-destaques">
-          <div class="destaque">
-            <h4>Missão</h4>
-            <p>Ajudar pequenos negócios a crescerem com mais alcance, presença e visibilidade.</p>
-          </div>
+        <div class="lista-box">
+          <h3>Integrantes</h3>
 
-          <div class="destaque">
-            <h4>Visão</h4>
-            <p>Ser uma proposta criativa e inspiradora no apoio à divulgação de marcas menores.</p>
-          </div>
-
-          <div class="destaque">
-            <h4>Objetivo</h4>
-            <p>Conectar empresas ao público certo e transformar divulgação em oportunidade real.</p>
-          </div>
+          <ul>
+            <li><strong>Lauanda Andrade</strong></li>
+            <li><strong>Eloá Fedalto de Oliveira</strong></li>
+            <li><strong>Felipe Shaikoski</strong></li>
+            <li><strong>Davi Gonçalves Felix</strong></li>
+            <li><strong>Flávia Alexandra Antochevis</strong></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -629,7 +719,7 @@
           <div class="icone">01</div>
           <h3>Divulgação digital</h3>
           <p>
-            Estratégias para aumentar a presença online da empresa e tornar o negócio mais conhecido.
+            Estratégias para melhorar a presença online da marca e aumentar sua visibilidade.
           </p>
         </div>
 
@@ -637,7 +727,7 @@
           <div class="icone">02</div>
           <h3>Redes sociais</h3>
           <p>
-            Ideias para melhorar conteúdos, alcançar mais pessoas e criar conexão com o público.
+            Ideias para criar conteúdos mais atrativos e ampliar o alcance nas plataformas digitais.
           </p>
         </div>
 
@@ -651,9 +741,9 @@
 
         <div class="card">
           <div class="icone">04</div>
-          <h3>Posicionamento da marca</h3>
+          <h3>Posicionamento</h3>
           <p>
-            Ações para destacar os pontos fortes do negócio e melhorar sua presença no mercado.
+            Ações pensadas para destacar os pontos fortes do negócio e aproximá-lo do público certo.
           </p>
         </div>
       </div>
@@ -664,35 +754,36 @@
     <div class="container">
       <h2 class="titulo-secao">Por que escolher a Alcance +?</h2>
       <p class="subtitulo-secao">
-        Nosso projeto foi pensado para valorizar negócios menores e mostrar que eles também podem crescer com força.
+        Nossa proposta foi pensada para valorizar empresas menores e mostrar que elas também
+        podem crescer com força no mercado.
       </p>
 
       <div class="diferenciais-grid">
-        <div class="box-diferencial">
+        <div class="diferencial-box">
           <h3>Foco em pequenos negócios</h3>
           <p>
-            Entendemos que muitas empresas ainda estão construindo seu espaço e precisam de apoio para se destacar.
+            Entendemos que muitas marcas ainda estão construindo seu espaço e precisam de visibilidade.
           </p>
         </div>
 
-        <div class="box-diferencial">
+        <div class="diferencial-box">
           <h3>Criatividade</h3>
           <p>
-            Buscamos ideias modernas e chamativas para fazer cada negócio ser lembrado pelo público.
+            Buscamos ideias modernas e estratégicas para fazer cada negócio se destacar.
           </p>
         </div>
 
-        <div class="box-diferencial">
+        <div class="diferencial-box">
           <h3>Comunicação clara</h3>
           <p>
-            Valorizamos uma linguagem direta, acessível e eficiente para aproximar marca e cliente.
+            Valorizamos uma linguagem direta e eficiente para aproximar empresa e cliente.
           </p>
         </div>
 
-        <div class="box-diferencial">
+        <div class="diferencial-box">
           <h3>Mais oportunidades</h3>
           <p>
-            O nosso objetivo é ajudar empresas a ampliarem seu alcance e conquistarem novas chances de crescimento.
+            Nosso objetivo é ajudar empresas a ampliarem seu alcance e conquistarem novas chances de crescimento.
           </p>
         </div>
       </div>
@@ -715,18 +806,31 @@
       <div class="contato-box">
         <h3>Entre em contato</h3>
         <p>
-          Quer saber mais sobre a proposta da Alcance +? Entre em contato e conheça melhor nosso projeto.
+          Converse com um de nossos atendentes pelo WhatsApp ou acompanhe nosso projeto pelo Instagram.
         </p>
 
         <div class="info-contato">
-          <div class="info-item">WhatsApp: (41) 99730-4061</div>
-          <div class="info-item">Projeto escolar</div>
-          <div class="info-item">Equipe 3 - Colégio Sesi</div>
+          <div class="info-item">WhatsApp pessoal para atendimento</div>
+          <div class="info-item">Instagram: @aalcance.marketing</div>
+          <div class="info-item">Projeto escolar de marketing</div>
         </div>
 
         <div class="botoes-contato">
-          <a href="https://wa.me/5541997304061" target="_blank" class="btn-whats">Chamar no WhatsApp</a>
-          <a href="#sobre" class="btn-info">Mais informações</a>
+          <a
+            href="https://wa.me/5541997304061?text=Olá! Vim pelo site da Alcance+ e gostaria de saber mais sobre os serviços."
+            target="_blank"
+            class="btn-whats"
+          >
+            Chamar no WhatsApp
+          </a>
+
+          <a
+            href="https://instagram.com/aalcance.marketing"
+            target="_blank"
+            class="btn-insta"
+          >
+            Acessar Instagram
+          </a>
         </div>
       </div>
     </div>
@@ -735,11 +839,29 @@
   <footer>
     <h3>Alcance +</h3>
     <p>Crescimento, divulgação e oportunidade para pequenos negócios.</p>
-    <p>Criado por: Alunos da equipe 3 do Colégio Sesi da Indústria</p>
+    <p>Projeto escolar desenvolvido por alunos do Colégio Sesi da Indústria de Campo Largo.</p>
   </footer>
 
+  <a
+    href="https://instagram.com/aalcance.marketing"
+    target="_blank"
+    class="float float-insta"
+    aria-label="Instagram"
+  >
+    📷
+  </a>
+
+  <a
+    href="https://wa.me/5541997304061?text=Olá! Vim pelo site da Alcance+ e gostaria de saber mais sobre os serviços."
+    target="_blank"
+    class="float float-whats"
+    aria-label="WhatsApp"
+  >
+    💬
+  </a>
+
   <script>
-    const elementos = document.querySelectorAll('.animar');
+    const elementos = document.querySelectorAll(".animar");
 
     function mostrarAoRolar() {
       const topoTela = window.innerHeight * 0.85;
@@ -748,12 +870,12 @@
         const posicao = elemento.getBoundingClientRect().top;
 
         if (posicao < topoTela) {
-          elemento.classList.add('mostrar');
+          elemento.classList.add("mostrar");
         }
       });
     }
 
-    window.addEventListener('scroll', mostrarAoRolar);
+    window.addEventListener("scroll", mostrarAoRolar);
     mostrarAoRolar();
   </script>
 
