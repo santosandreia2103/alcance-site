@@ -1,38 +1,32 @@
 // LOADING
 window.onload = () => {
-  setTimeout(()=>{
-    document.getElementById("loading").style.display="none";
-  },1500);
+  setTimeout(() => {
+    document.getElementById("loading").style.display = "none";
+  }, 1500);
 };
 
-// TROCAR TELA
-function trocarTela(id){
-  document.querySelectorAll(".tela").forEach(t=>{
-    t.classList.add("hidden");
-  });
-
-  document.getElementById(id).classList.remove("hidden");
-}
-
-// MODAL
+// ABRIR MODAL
 function abrirCadastro(){
-  document.getElementById("modal").style.display="flex";
+  document.getElementById("modal").style.display = "flex";
 }
 
+// IR PARA PLANOS
 function irPlanos(){
-  document.getElementById("modal").style.display="none";
+  document.getElementById("modal").style.display = "none";
   trocarTela("planos");
 }
 
-// DADOS
-let plano = "";
-let posts = JSON.parse(localStorage.getItem("posts")) || [];
+// TROCAR TELA
+function trocarTela(id){
+  document.querySelectorAll(".tela").forEach(t => t.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
 
 // ESCOLHER PLANO
-function escolherPlano(p){
-  plano = p;
+function escolherPlano(plano){
+  localStorage.setItem("plano", plano);
   trocarTela("dashboard");
-  atualizar();
+  carregarProdutos();
 }
 
 // POSTAR PRODUTO
@@ -40,38 +34,36 @@ function postar(){
   let nome = document.getElementById("nome").value;
   let desc = document.getElementById("desc").value;
 
-  if(plano === "gratis" && posts.length >= 1){
-    alert("Plano grátis permite apenas 1 produto!");
+  if(nome === "" || desc === ""){
+    alert("Preencha tudo");
     return;
   }
 
-  let produto = {nome, desc};
+  let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
-  posts.push(produto);
+  produtos.push({nome, desc});
 
-  localStorage.setItem("posts", JSON.stringify(posts));
+  localStorage.setItem("produtos", JSON.stringify(produtos));
 
-  atualizar();
+  document.getElementById("nome").value = "";
+  document.getElementById("desc").value = "";
+
+  carregarProdutos();
 }
 
-// ATUALIZAR LISTA
-function atualizar(){
+// CARREGAR PRODUTOS
+function carregarProdutos(){
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
 
-  posts.forEach(p=>{
+  let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+  produtos.forEach(p => {
     lista.innerHTML += `
-      <div class="card">
-        <h3>${p.nome}</h3>
+      <div class="produto">
+        <strong>${p.nome}</strong>
         <p>${p.desc}</p>
       </div>
     `;
   });
-}
-
-// FECHAR MODAL
-window.onclick = function(e){
-  if(e.target.classList.contains("modal")){
-    e.target.style.display="none";
-  }
 }
