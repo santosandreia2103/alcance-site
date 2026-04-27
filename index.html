@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,155 +7,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alcance+</title>
 
-<style>
-body{font-family:sans-serif;margin:0;}
-header{padding:15px;background:#fff;border-bottom:1px solid #eee;}
-button{padding:10px 15px;border:none;background:#ff007a;color:#fff;cursor:pointer;border-radius:5px;}
-.container{padding:30px;text-align:center;}
-.hidden{display:none;}
-
-/* cards */
-.card{
-background:#fff;
-padding:20px;
-margin:10px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* modal */
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-justify-content:center;
-align-items:center;
-}
-
-.modal-box{
-background:#fff;
-padding:20px;
-border-radius:10px;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- LOADING -->
+<div id="loading">
+  <div class="loader"></div>
+  <p>Carregando Alcance+</p>
+</div>
+
 <header>
-  <strong>Alcance+</strong>
+  <h2>Alcance+</h2>
   <button onclick="abrirCadastro()">Começar</button>
 </header>
 
 <!-- HOME -->
-<div id="home" class="container">
-  <h1>Divulgue sua empresa</h1>
-  <p>Plataforma para alcançar mais clientes</p>
-</div>
+<section id="home" class="tela">
+  <h1>Sua empresa mais visível</h1>
+  <p>Divulgue produtos e alcance mais clientes</p>
+</section>
 
 <!-- PLANOS -->
-<div id="planos" class="container hidden">
+<section id="planos" class="tela hidden">
   <h2>Escolha um plano</h2>
 
   <div class="card">
-    <h3>Grátis</h3>
+    <h3>Plano Grátis</h3>
     <p>1 produto</p>
     <button onclick="escolherPlano('gratis')">Selecionar</button>
   </div>
 
   <div class="card">
-    <h3>Pro</h3>
+    <h3>Plano Pro</h3>
     <p>Produtos ilimitados</p>
     <button onclick="escolherPlano('pro')">Selecionar</button>
   </div>
-</div>
+</section>
 
 <!-- DASHBOARD -->
-<div id="dashboard" class="container hidden">
-  <h2>Painel da empresa</h2>
+<section id="dashboard" class="tela hidden">
+  <h2>Painel da Empresa</h2>
 
-  <input id="produtoNome" placeholder="Nome do produto">
-  <input id="produtoDesc" placeholder="Descrição">
+  <input id="nome" placeholder="Nome do produto">
+  <input id="desc" placeholder="Descrição">
   <button onclick="postar()">Postar</button>
 
   <div id="lista"></div>
-</div>
+</section>
 
-<!-- CADASTRO -->
-<div id="modalCadastro" class="modal">
+<!-- MODAL -->
+<div id="modal" class="modal">
   <div class="modal-box">
-    <h2>Cadastrar</h2>
-    <input placeholder="Empresa">
-    <input placeholder="Email">
-    <input type="password" placeholder="Senha">
+    <h2>Cadastro</h2>
     <button onclick="irPlanos()">Continuar</button>
   </div>
 </div>
 
-<script>
-
-let plano = "";
-let posts = [];
-
-function abrirCadastro(){
-  document.getElementById("modalCadastro").style.display="flex";
-}
-
-function irPlanos(){
-  document.getElementById("modalCadastro").style.display="none";
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("planos").classList.remove("hidden");
-}
-
-function escolherPlano(p){
-  plano = p;
-  document.getElementById("planos").classList.add("hidden");
-  document.getElementById("dashboard").classList.remove("hidden");
-}
-
-function postar(){
-  const nome = document.getElementById("produtoNome").value;
-  const desc = document.getElementById("produtoDesc").value;
-
-  if(plano === "gratis" && posts.length >= 1){
-    alert("Plano grátis permite apenas 1 produto!");
-    return;
-  }
-
-  const produto = {nome, desc};
-  posts.push(produto);
-
-  atualizar();
-}
-
-function atualizar(){
-  const lista = document.getElementById("lista");
-  lista.innerHTML = "";
-
-  posts.forEach(p=>{
-    lista.innerHTML += `
-      <div class="card">
-        <h3>${p.nome}</h3>
-        <p>${p.desc}</p>
-      </div>
-    `;
-  });
-}
-
-window.onclick = function(e){
-  if(e.target.classList.contains("modal")){
-    e.target.style.display="none";
-  }
-}
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
