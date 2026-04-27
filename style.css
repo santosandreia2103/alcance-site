@@ -1,9 +1,10 @@
 body{
-font-family:sans-serif;
+font-family:'Segoe UI',sans-serif;
 margin:0;
+background:#f6f6f6;
 }
 
-/* loading */
+/* LOADING */
 #loading{
 position:fixed;
 width:100%;
@@ -29,17 +30,25 @@ animation:spin 1s linear infinite;
 100%{transform:rotate(360deg);}
 }
 
-/* header */
+/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
-padding:15px;
-border-bottom:1px solid #eee;
+padding:20px;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* telas */
+header button{
+background:#ff007a;
+color:white;
+padding:10px 20px;
+border-radius:10px;
+}
+
+/* TELAS */
 .tela{
-padding:40px;
+padding:60px;
 text-align:center;
 animation:fade 0.5s;
 }
@@ -53,35 +62,64 @@ from{opacity:0;transform:translateY(20px);}
 to{opacity:1;}
 }
 
-/* cards */
+/* CARDS */
 .card{
-background:#fff;
-padding:20px;
-margin:10px;
-border-radius:10px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
+background:white;
+padding:25px;
+margin:15px auto;
+max-width:300px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:translateY(-5px);
 }
 
-/* botões */
+.destaque{
+border:2px solid #ff007a;
+}
+
+/* BOTÕES */
 button{
 background:#ff007a;
 color:white;
 border:none;
-padding:10px;
-border-radius:5px;
+padding:12px;
+border-radius:8px;
 cursor:pointer;
+margin-top:10px;
 }
 
 button:hover{
 transform:scale(1.05);
 }
 
-/* modal */
+/* INPUTS */
+input{
+display:block;
+margin:10px auto;
+padding:10px;
+width:80%;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* PRODUTOS */
+#lista{
+margin-top:20px;
+}
+
+.produto{
+background:white;
+padding:15px;
+margin:10px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* MODAL */
 .modal{
 display:none;
 position:fixed;
@@ -94,8 +132,8 @@ align-items:center;
 
 .modal-box{
 background:white;
-padding:20px;
-border-radius:10px;
+padding:30px;
+border-radius:15px;
 animation:pop 0.3s;
 }
 
