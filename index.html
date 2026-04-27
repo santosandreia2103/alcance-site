@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alcance+</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alcance+</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -16,9 +17,10 @@
   <p>Carregando Alcance+</p>
 </div>
 
+<!-- HEADER -->
 <header>
   <h2>Alcance+</h2>
-  <button onclick="abrirCadastro()">Começar</button>
+  <button id="btnComecar">Começar</button>
 </header>
 
 <!-- HOME -->
@@ -50,7 +52,7 @@
 
   <input id="nome" placeholder="Nome do produto">
   <input id="desc" placeholder="Descrição">
-  <button onclick="postar()">Postar</button>
+  <button id="btnPostar">Postar</button>
 
   <div id="lista"></div>
 </section>
@@ -60,10 +62,12 @@
   <div class="modal-box">
     <h2>Cadastro</h2>
     <p>Simulação de cadastro</p>
-    <button onclick="irPlanos()">Continuar</button>
+    <button id="btnContinuar">Continuar</button>
   </div>
 </div>
 
+<!-- SCRIPT SEMPRE NO FINAL -->
 <script src="script.js"></script>
+
 </body>
 </html>
