@@ -1,8 +1,7 @@
 // LOADING
-window.onload = () => {
-  setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-  }, 1500);
+window.onload = function(){
+  document.getElementById("loading").style.display = "none";
+  mostrarProdutos();
 };
 
 // ABRIR MODAL
@@ -16,9 +15,14 @@ function irPlanos(){
   trocarTela("planos");
 }
 
-// TROCAR TELA
+// TROCAR TELAS
 function trocarTela(id){
-  document.querySelectorAll(".tela").forEach(t => t.classList.add("hidden"));
+  let telas = document.querySelectorAll(".tela");
+
+  telas.forEach(function(t){
+    t.classList.add("hidden");
+  });
+
   document.getElementById(id).classList.remove("hidden");
 }
 
@@ -26,7 +30,6 @@ function trocarTela(id){
 function escolherPlano(plano){
   localStorage.setItem("plano", plano);
   trocarTela("dashboard");
-  carregarProdutos();
 }
 
 // POSTAR PRODUTO
@@ -41,26 +44,29 @@ function postar(){
 
   let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
-  produtos.push({nome, desc});
+  produtos.push({nome: nome, desc: desc});
 
   localStorage.setItem("produtos", JSON.stringify(produtos));
 
   document.getElementById("nome").value = "";
   document.getElementById("desc").value = "";
 
-  carregarProdutos();
+  mostrarProdutos();
 }
 
-// CARREGAR PRODUTOS
-function carregarProdutos(){
+// MOSTRAR PRODUTOS
+function mostrarProdutos(){
   let lista = document.getElementById("lista");
+
+  if(!lista) return;
+
   lista.innerHTML = "";
 
   let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
-  produtos.forEach(p => {
+  produtos.forEach(function(p){
     lista.innerHTML += `
-      <div class="produto">
+      <div style="background:#eee; margin:10px; padding:10px;">
         <strong>${p.nome}</strong>
         <p>${p.desc}</p>
       </div>
