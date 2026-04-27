@@ -1,143 +1,129 @@
 body{
-font-family:'Segoe UI',sans-serif;
-margin:0;
-background:#f6f6f6;
+  font-family:sans-serif;
+  margin:0;
+  background:#f5f5f5;
 }
 
-/* LOADING */
+/* loading */
 #loading{
-position:fixed;
-width:100%;
-height:100%;
-background:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
 }
 
 .loader{
-width:50px;
-height:50px;
-border:5px solid #eee;
-border-top:5px solid #ff007a;
-border-radius:50%;
-animation:spin 1s linear infinite;
+  width:50px;
+  height:50px;
+  border:5px solid #eee;
+  border-top:5px solid #ff007a;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
-100%{transform:rotate(360deg);}
+  100%{transform:rotate(360deg);}
 }
 
-/* HEADER */
+/* header */
 header{
-display:flex;
-justify-content:space-between;
-padding:20px;
-background:white;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
-header button{
-background:#ff007a;
-color:white;
-padding:10px 20px;
-border-radius:10px;
+header h2{
+  color:#ff007a;
 }
 
-/* TELAS */
+/* telas */
 .tela{
-padding:60px;
-text-align:center;
-animation:fade 0.5s;
+  padding:40px;
+  text-align:center;
 }
 
 .hidden{
-display:none;
+  display:none;
 }
 
-@keyframes fade{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;}
-}
-
-/* CARDS */
+/* cards */
 .card{
-background:white;
-padding:25px;
-margin:15px auto;
-max-width:300px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-transition:0.3s;
+  background:white;
+  padding:20px;
+  margin:15px auto;
+  border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
+  max-width:300px;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.card.destaque{
+  border:2px solid #ff007a;
 }
 
-.destaque{
-border:2px solid #ff007a;
-}
-
-/* BOTÕES */
+/* botões */
 button{
-background:#ff007a;
-color:white;
-border:none;
-padding:12px;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
+  background:#ff007a;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.05);
+  transform:scale(1.05);
+  background:#e6006f;
 }
 
-/* INPUTS */
+/* inputs */
 input{
-display:block;
-margin:10px auto;
-padding:10px;
-width:80%;
-border-radius:8px;
-border:1px solid #ccc;
+  padding:10px;
+  margin:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  width:200px;
 }
 
-/* PRODUTOS */
-#lista{
-margin-top:20px;
+/* lista produtos */
+#lista div{
+  background:white;
+  margin:10px auto;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  max-width:300px;
 }
 
-.produto{
-background:white;
-padding:15px;
-margin:10px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* MODAL */
+/* modal */
 .modal{
-display:none;
-position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-justify-content:center;
-align-items:center;
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
 }
 
 .modal-box{
-background:white;
-padding:30px;
-border-radius:15px;
-animation:pop 0.3s;
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  animation:pop 0.3s;
 }
 
 @keyframes pop{
-from{transform:scale(0.8);}
-to{transform:scale(1);}
+  from{transform:scale(0.8);}
+  to{transform:scale(1);}
 }
