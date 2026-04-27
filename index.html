@@ -1,70 +1,72 @@
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alcance+</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alcance+</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-  <div class="loader"></div>
-  <p>Carregando Alcance+</p>
-</div>
-
-<header>
-  <h2>Alcance+</h2>
-  <button onclick="abrirCadastro()">Começar</button>
-</header>
-
-<!-- HOME -->
-<section id="home" class="tela">
-  <h1>Sua empresa mais visível</h1>
-  <p>Divulgue produtos e alcance mais clientes</p>
-</section>
-
-<!-- PLANOS -->
-<section id="planos" class="tela hidden">
-  <h2>Escolha um plano</h2>
-
-  <div class="card">
-    <h3>Plano Grátis</h3>
-    <p>1 produto</p>
-    <button onclick="escolherPlano('gratis')">Selecionar</button>
+  <!-- LOADING -->
+  <div id="loading">
+    <div class="loader"></div>
+    <p>Carregando Alcance+</p>
   </div>
 
-  <div class="card">
-    <h3>Plano Pro</h3>
-    <p>Produtos ilimitados</p>
-    <button onclick="escolherPlano('pro')">Selecionar</button>
+  <!-- HEADER -->
+  <header>
+    <h2>Alcance+</h2>
+    <button onclick="abrirCadastro()">Começar</button>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="tela">
+    <h1>Sua empresa mais visível</h1>
+    <p>Divulgue produtos e alcance mais clientes</p>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="tela hidden">
+    <h2>Escolha um plano</h2>
+
+    <div class="card">
+      <h3>Plano Grátis</h3>
+      <p>1 produto</p>
+      <button onclick="escolherPlano('gratis')">Selecionar</button>
+    </div>
+
+    <div class="card">
+      <h3>Plano Pro</h3>
+      <p>Produtos ilimitados</p>
+      <button onclick="escolherPlano('pro')">Selecionar</button>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="tela hidden">
+    <h2>Painel da Empresa</h2>
+
+    <input id="nome" placeholder="Nome do produto">
+    <input id="desc" placeholder="Descrição">
+    <button onclick="postar()">Postar</button>
+
+    <div id="lista"></div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-box">
+      <h2>Cadastro</h2>
+      <button onclick="irPlanos()">Continuar</button>
+    </div>
   </div>
-</section>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="tela hidden">
-  <h2>Painel da Empresa</h2>
+  <!-- JS (SEMPRE NO FINAL) -->
+  <script src="script.js"></script>
 
-  <input id="nome" placeholder="Nome do produto">
-  <input id="desc" placeholder="Descrição">
-  <button onclick="postar()">Postar</button>
-
-  <div id="lista"></div>
-</section>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-box">
-    <h2>Cadastro</h2>
-    <button onclick="irPlanos()">Continuar</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
