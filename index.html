@@ -3,212 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alcance +</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Alcance+</title>
 
 <style>
-:root{
---rosa:#ff007a;
---rosa-claro:#ff4fa0;
---amarelo:#ffd21f;
---preto:#111;
---branco:#fff;
---cinza:#f6f6f6;
---texto:#4f4f4f;
---verde:#25d366;
---sombra:0 12px 30px rgba(0,0,0,0.12);
-}
+body{font-family:sans-serif;margin:0;}
+header{padding:15px;background:#fff;border-bottom:1px solid #eee;}
+button{padding:10px 15px;border:none;background:#ff007a;color:#fff;cursor:pointer;border-radius:5px;}
+.container{padding:30px;text-align:center;}
+.hidden{display:none;}
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{font-family:Poppins,sans-serif;}
-
-header{
-position:sticky;
-top:0;
-background:#111;
-padding:15px;
-z-index:1000;
-}
-
-.navbar{
-display:flex;
-justify-content:space-between;
-max-width:1200px;
-margin:auto;
-color:#fff;
-}
-
-.menu a{
-color:#fff;
-margin:0 10px;
-text-decoration:none;
-}
-
-.hero{
-min-height:90vh;
-display:flex;
-align-items:center;
-background:linear-gradient(135deg,var(--rosa),var(--amarelo));
-color:#fff;
-padding:40px;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
-
-.titulo-secao{
-text-align:center;
-font-size:2.4rem;
-margin-bottom:10px;
-}
-
-.subtitulo-secao{
-text-align:center;
-margin-bottom:40px;
-color:var(--texto);
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
+/* cards */
 .card{
 background:#fff;
 padding:20px;
-border-radius:15px;
-box-shadow:var(--sombra);
+margin:10px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.objetivos-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+/* modal */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
 }
 
-.objetivo{
-background:#fff7dc;
+.modal-box{
+background:#fff;
 padding:20px;
-border-radius:15px;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
-
-.cta{
-background:var(--rosa);
-color:#fff;
-text-align:center;
-padding:60px 20px;
-}
-
-section{
-scroll-margin-top:80px;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="navbar">
-<div>Alcance +</div>
-<div class="menu">
-<a href="#inicio">Início</a>
-<a href="#sobre">Projeto</a>
-<a href="#metodologia">Metodologia</a>
-<a href="#resultados">Resultados</a>
-<a href="#contato">Contato</a>
-</div>
-</div>
+  <strong>Alcance+</strong>
+  <button onclick="abrirCadastro()">Começar</button>
 </header>
 
-<section class="hero" id="inicio">
-<div class="container">
-<h1>Impulsione seu negócio</h1>
-<p>Plataforma de marketing digital para empresas aumentarem sua visibilidade.</p>
-</div>
-</section>
-
-<!-- SOBRE -->
-<section id="sobre">
-<div class="container">
-<h2 class="titulo-secao">Sobre o Projeto</h2>
-<p class="subtitulo-secao">Baseado em uma necessidade real observada no mercado.</p>
-
-<p>
-Após a visita à empresa Nutrimental, observou-se que muitas empresas enfrentam dificuldades para crescer devido à falta de estratégias de marketing. 
-Diante disso, foi desenvolvido o projeto Alcance+, com o objetivo de melhorar a divulgação de produtos e serviços no ambiente digital.
-</p>
-
-<p>
-O marketing digital permite maior alcance, menor custo e melhor acompanhamento de resultados, tornando-se essencial para empresas que desejam crescer.
-</p>
-
-<p style="margin-top:20px; font-style:italic;">
-“O marketing vai além de vender: ele constrói relações e posiciona marcas no mercado.”
-</p>
-
-</div>
-</section>
-
-<!-- METODOLOGIA -->
-<section id="metodologia">
-<div class="container">
-<h2 class="titulo-secao">Metodologia</h2>
-
-<div class="cards">
-<div class="card"><h3>Pesquisa</h3><p>Análise das dificuldades das empresas.</p></div>
-<div class="card"><h3>Análise</h3><p>Estudo de plataformas existentes.</p></div>
-<div class="card"><h3>Planejamento</h3><p>Definição do público-alvo.</p></div>
-<div class="card"><h3>Desenvolvimento</h3><p>Criação do site funcional.</p></div>
+<!-- HOME -->
+<div id="home" class="container">
+  <h1>Divulgue sua empresa</h1>
+  <p>Plataforma para alcançar mais clientes</p>
 </div>
 
+<!-- PLANOS -->
+<div id="planos" class="container hidden">
+  <h2>Escolha um plano</h2>
+
+  <div class="card">
+    <h3>Grátis</h3>
+    <p>1 produto</p>
+    <button onclick="escolherPlano('gratis')">Selecionar</button>
+  </div>
+
+  <div class="card">
+    <h3>Pro</h3>
+    <p>Produtos ilimitados</p>
+    <button onclick="escolherPlano('pro')">Selecionar</button>
+  </div>
 </div>
-</section>
 
-<!-- RESULTADOS -->
-<section id="resultados">
-<div class="container">
-<h2 class="titulo-secao">Resultados</h2>
+<!-- DASHBOARD -->
+<div id="dashboard" class="container hidden">
+  <h2>Painel da empresa</h2>
 
-<div class="objetivos-grid">
-<div class="objetivo"><h3>Site funcional</h3><p>Estrutura organizada.</p></div>
-<div class="objetivo"><h3>Mais visibilidade</h3><p>Divulgação facilitada.</p></div>
-<div class="objetivo"><h3>Facilidade</h3><p>Interface simples.</p></div>
-<div class="objetivo"><h3>Solução prática</h3><p>Ferramenta acessível.</p></div>
+  <input id="produtoNome" placeholder="Nome do produto">
+  <input id="produtoDesc" placeholder="Descrição">
+  <button onclick="postar()">Postar</button>
+
+  <div id="lista"></div>
 </div>
 
+<!-- CADASTRO -->
+<div id="modalCadastro" class="modal">
+  <div class="modal-box">
+    <h2>Cadastrar</h2>
+    <input placeholder="Empresa">
+    <input placeholder="Email">
+    <input type="password" placeholder="Senha">
+    <button onclick="irPlanos()">Continuar</button>
+  </div>
 </div>
-</section>
 
-<!-- CONTATO -->
-<section id="contato">
-<div class="container">
-<h2 class="titulo-secao">Contato</h2>
-<p class="subtitulo-secao">Fale com a equipe Alcance+</p>
+<script>
 
-<a href="https://wa.me/5541997304061" target="_blank">WhatsApp</a><br>
-<a href="https://instagram.com/aalcance.marketing" target="_blank">Instagram</a>
+let plano = "";
+let posts = [];
 
-</div>
-</section>
+function abrirCadastro(){
+  document.getElementById("modalCadastro").style.display="flex";
+}
 
-<!-- CONCLUSÃO -->
-<section class="cta">
-<h2>Conclusão</h2>
-<p>
-O projeto Alcance+ mostrou-se uma solução viável para auxiliar empresas na divulgação digital, ampliando seu alcance e fortalecendo sua presença no mercado.
-</p>
-</section>
+function irPlanos(){
+  document.getElementById("modalCadastro").style.display="none";
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("planos").classList.remove("hidden");
+}
 
-<footer style="background:#111;color:#fff;text-align:center;padding:20px;">
-<p>Alcance+ - Projeto escolar</p>
-</footer>
+function escolherPlano(p){
+  plano = p;
+  document.getElementById("planos").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
+}
+
+function postar(){
+  const nome = document.getElementById("produtoNome").value;
+  const desc = document.getElementById("produtoDesc").value;
+
+  if(plano === "gratis" && posts.length >= 1){
+    alert("Plano grátis permite apenas 1 produto!");
+    return;
+  }
+
+  const produto = {nome, desc};
+  posts.push(produto);
+
+  atualizar();
+}
+
+function atualizar(){
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  posts.forEach(p=>{
+    lista.innerHTML += `
+      <div class="card">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+      </div>
+    `;
+  });
+}
+
+window.onclick = function(e){
+  if(e.target.classList.contains("modal")){
+    e.target.style.display="none";
+  }
+}
+
+</script>
 
 </body>
 </html>
